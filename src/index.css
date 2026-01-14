@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fakepixel Giveaways Design System
+   Professional, clean, understated
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    --primary: 215 50% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 15% 94%;
+    --secondary-foreground: 220 15% 25%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 215 50% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 15% 90%;
+    --input: 210 15% 90%;
+    --ring: 215 50% 45%;
+
+    --radius: 0.375rem;
+
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 220 15% 20%;
+    --sidebar-primary: 215 50% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 15% 94%;
+    --sidebar-accent-foreground: 220 15% 25%;
+    --sidebar-border: 210 15% 90%;
+    --sidebar-ring: 215 50% 45%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 20% 11%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 20% 11%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 220 55% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 16%;
+    --secondary-foreground: 220 15% 95%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 220 55% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 220 55% 55%;
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 220 55% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 16%;
+    --sidebar-accent-foreground: 220 15% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 220 55% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
