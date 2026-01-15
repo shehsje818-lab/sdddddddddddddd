@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import { API_ENDPOINTS } from "@/config/api";
 import { PageLayout } from "@/components/Layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { PositionCard } from "@/components/ui/PositionCard";
@@ -10,15 +9,13 @@ import { MessageCircle } from "lucide-react";
 const Index = () => {
   const { user } = useAuth();
 
-  const handleDiscordLogin = async () => {
-    try {
-      const response = await fetch(API_ENDPOINTS.AUTH_DISCORD_URL);
-      const data = await response.json();
-      window.location.href = data.url;
-    } catch (err) {
-      console.error('Failed to get Discord login URL:', err);
-      alert('Failed to initiate Discord login');
-    }
+  const handleDiscordLogin = () => {
+    const clientId = import.meta.env.VITE_DISCORD_CLIENT_ID;
+    const redirectUri = `${window.location.origin}/auth/discord/callback`;
+    
+    const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=identify`;
+    
+    window.location.href = discordAuthUrl;
   };
 
   return (
