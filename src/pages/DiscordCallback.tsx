@@ -39,7 +39,7 @@ const DiscordCallback = () => {
         const data = await response.json();
         
         // Store token and user data
-        login(data.token, data.user);
+        login(data.token);
         
         // Redirect to home or apply page
         navigate('/apply');

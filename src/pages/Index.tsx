@@ -10,12 +10,21 @@ const Index = () => {
   const { user } = useAuth();
 
   const handleDiscordLogin = () => {
-    const clientId = import.meta.env.VITE_DISCORD_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/auth/discord/callback`;
-    
-    const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=identify`;
-    
-    window.location.href = discordAuthUrl;
+    try {
+      const clientId = import.meta.env.VITE_DISCORD_CLIENT_ID;
+      
+      if (!clientId) {
+        throw new Error('Discord Client ID is not configured');
+      }
+      
+      const redirectUri = `${window.location.origin}/auth/discord/callback`;
+      const discordAuthUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=identify`;
+      
+      window.location.href = discordAuthUrl;
+    } catch (err) {
+      console.error('Discord login error:', err);
+      alert(err instanceof Error ? err.message : 'Failed to initiate Discord login');
+    }
   };
 
   return (
