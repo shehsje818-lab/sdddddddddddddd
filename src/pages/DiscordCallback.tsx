@@ -41,7 +41,7 @@ const DiscordCallback = () => {
         // Store token and user data
         login(data.token);
         
-        // Redirect to home or apply page
+        // Redirect to home or apply pages
         navigate('/apply');
       } catch (err) {
         console.error('Discord callback error:', err);
