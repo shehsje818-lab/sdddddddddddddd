@@ -28,6 +28,7 @@ const DiscordCallback = () => {
           headers: {
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
           body: JSON.stringify({ code }),
         });
 
@@ -39,7 +40,7 @@ const DiscordCallback = () => {
         const data = await response.json();
         
         // Store token and user data
-        login(data.token);
+        login(data.token, data.user);
         
         // Redirect to home or apply pages
         navigate('/apply');
