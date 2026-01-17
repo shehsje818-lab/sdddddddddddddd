@@ -6,7 +6,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { StaffMember, StaffPanelResponse, ROLE_HIERARCHY, ROLE_LABELS } from './types';
+import { StaffMember, StaffPanelResponse, ROLE_HIERARCHY, ROLE_LABELS, STAFF_ROLES } from './types';
 import { API_ENDPOINTS } from '@/config/api';
 import { cn } from '@/lib/utils';
 
@@ -50,8 +50,9 @@ export function StaffPanel({ isOpen, onClose }: StaffPanelProps) {
 
         const data: StaffPanelResponse = await response.json();
         
-        // Sort staff by role hierarchy
-        const sortedStaff = [...data.users].sort((a, b) => {
+        // Filter out non-staff roles and sort by role hierarchy
+        const staffOnly = data.users.filter(user => STAFF_ROLES.has(user.role));
+        const sortedStaff = [...staffOnly].sort((a, b) => {
           const aHierarchy = ROLE_HIERARCHY[a.role] ?? 999;
           const bHierarchy = ROLE_HIERARCHY[b.role] ?? 999;
           return aHierarchy - bHierarchy;
@@ -191,9 +192,9 @@ export function StaffPanel({ isOpen, onClose }: StaffPanelProps) {
                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary/50 transition-colors"
                         >
                           {/* Avatar */}
-                          <Avatar className="w-9 h-9 flex-shrink-0">
-                            <AvatarImage src={member.avatar} alt={member.username} />
-                            <AvatarFallback>
+                          <Avatar className="w-9 h-9 flex-shrink-0 bg-primary/10">
+                            {member.avatar && <AvatarImage src={member.avatar} alt={member.username} />}
+                            <AvatarFallback className="font-semibold text-xs">
                               {member.username.charAt(0).toUpperCase()}
                             </AvatarFallback>
                           </Avatar>

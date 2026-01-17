@@ -31,6 +31,9 @@ export const ROLE_HIERARCHY: Record<string, number> = {
   'beta_tester': 8,
 };
 
+// Roles considered as staff
+export const STAFF_ROLES = new Set(Object.keys(ROLE_HIERARCHY));
+
 export const ROLE_LABELS: Record<string, string> = {
   'owner': 'Owner',
   'main_admin': 'Main Admin',
