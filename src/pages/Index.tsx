@@ -11,7 +11,7 @@ const Index = () => {
 
   const handleDiscordLogin = () => {
     try {
-      const discordAuthUrl = 'https://discord.com/oauth2/authorize?client_id=1436396594214867115&response_type=code&redirect_uri=https%3A%2F%2Fsafhgt.onrender.com%2Fapi%2Fauth%2Fdiscord%2Fcallback&scope=identify';
+      const discordAuthUrl = 'https://discord.com/oauth2/authorize?client_id=1436396594214867115&response_type=code&redirect_uri=https%3A%2F%2Fsafhgt-1.onrender.com%2Fapi%2Fauth%2Fdiscord%2Fcallback&scope=identify';
       window.location.href = discordAuthUrl;
     } catch (err) {
       console.error('Discord login error:', err);
